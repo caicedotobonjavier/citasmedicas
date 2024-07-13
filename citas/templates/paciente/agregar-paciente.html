@@ -1,0 +1,86 @@
+{% extends 'paciente/base_paciente.html' %}
+
+{% load static %}
+
+{% block title %}
+Agreagar Paciente
+{% endblock title %}
+
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-x grid-margin-x align-center">
+    <h1 class="cell" style="text-align:center;">CREAR NUEVO PACIENTE</h1>
+        <div class="cell large-6">
+
+        <form class="cell medium-9 grid-x grid-margin-x" method="POST">{% csrf_token %}
+            <div class="medium-6 cell">
+                <label>Nombre
+                {{form.nombres}}
+                </label>
+            </div>
+            <div class="medium-6 cell">
+                <label>Apellidos
+                    {{form.apellidos}}
+                </label>
+            </div>
+            <div class="medium-6 cell">
+                <label>Tipo Documento
+                    {{form.tipo_documento}}
+                </label>
+            </div>
+            <div class="medium-6 cell">
+                <label>N° Documento
+                    {{form.nro_documento}}
+                </label>
+            </div>
+
+            <div class="medium-6 cell">
+                <label>Fecha Nacimiento
+                    {{form.fecha_nacimiento}}
+                </label>
+            </div> 
+
+            <div class="medium-6 cell">
+                <label>Genero
+                    {{form.genero}}
+                </label>
+            </div>
+
+            <div class="medium-6 cell">
+                <label>Edad
+                    {{form.edad}}
+                </label>
+            </div>
+
+            <div class="medium-6 cell">
+                <label>EPS
+                    {{form.eps}}
+                </label>
+            </div>
+
+            <div class="medium-6 cell">
+                <label>Email
+                    {{form.email}}
+                </label>
+            </div>                
+            
+            <div class="medium-6 cell">
+                <label>Telefono
+                    {{form.telefono}}
+                </label>
+            </div>
+
+            <div class="cell medium-6">
+                <button type="submit" class="success button">Guardar</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Citas Medicas {% endblock title %}    
+
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<!-- INICIO DE LA IMAGEN -->
+<div class="grid-container">
+  <div class="grid-x grid-margin-x align-center">
+    <div class="cell orbit" role="region" aria-label="Favorite Space Pictures" data-orbit style="width: 800px;">
+        <div class="orbit-wrapper">
+          <ul class="orbit-container">
+            <li class="is-active orbit-slide">
+              <figure class="orbit-figure">
+                <img class="orbit-image" src="{% static 'image/portada.jpg' %}" alt="Space">
+                <figcaption class="orbit-caption">Asignacion Citas</figcaption>
+              </figure>
+            </li>        
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- FIN DE LA IMAGEN -->
+
+
+<!-- BLOQUE DE BIENVENDA -->
+<div class="grid-x align-center grid-padding-x">
+    <h1 class="cell large-8 " style="font-size: 40px; text-align: center;">Sistema de asignacion de citas</h1>
+    <div class="cell large-7">
+        <div class="callout secondary">
+            <h5>Citas Medicas</h5>
+            <p>Esta aplicacion asigna citas medicas, ademas maneja base de datos de las eps, pacientes y usuarios del sistema</p>
+            <a href="#">Asignar una cita</a>
+        </div>
+    </div>
+</div>
+<!-- FIN BLOQUE DE BIENVENDA -->
+
+
+{% endblock content %}

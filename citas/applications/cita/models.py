@@ -5,6 +5,8 @@ from model_utils.models import TimeStampedModel
 from applications.paciente.models import Paciente
 #
 from applications.eps.models import Eps
+#
+from .managers import CitaManager
 # Create your models here.
 
 
@@ -18,6 +20,8 @@ class Cita(TimeStampedModel):
     codigo_autorizacion = models.CharField('Codigo Autorizacion', max_length=20)
     tipo_estudio = models.CharField('Tipo de Estudio', max_length=20)
     obsernaciones = models.TextField('Observaciones', blank=True)
+
+    objects = CitaManager()
 
     class Meta:
         verbose_name = 'Cita'

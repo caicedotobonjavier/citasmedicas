@@ -2,12 +2,12 @@
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">App Citas Medicas</li>
-      <li><a href="#">Inicio</a></li>
+      <li><a href="{% url 'home_app:index' %}">Inicio</a></li>
       <li>
         <a href="#">Pacientes</a>
         <ul class="menu vertical">
-          <li><a href="#">Ver Pacientes</a></li>
-          <li><a href="#">Agregar Paciente</a></li>
+          <li><a href="{% url 'paciente_app:todos_los_pacientes' %}">Ver Pacientes</a></li>
+          <li><a href="{% url 'paciente_app:agregar_paciente' %}">Agregar Paciente</a></li>
         </ul>
       </li>
 

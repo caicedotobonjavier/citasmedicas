@@ -1,8 +1,11 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 #
-from django.views.generic import FormView, CreateView, UpdateView, ListView
+from django.views.generic import FormView, CreateView, UpdateView, ListView, DetailView
 #
 from .models import Paciente
+#
+from applications.cita.models import Cita
 #
 from .forms import AgregarPacienteForm
 #
@@ -31,3 +34,39 @@ class AgregarPacienteView(FormView):
         )
 
         return super(AgregarPacienteView, self).form_valid(form)
+
+
+
+class ListaPacientesView(ListView):
+    template_name = 'paciente/todos-los-pacientes.html'
+    model = Paciente
+    context_object_name = 'pacientes'
+
+    def get_queryset(self):
+        dato = self.request.GET.get('paciente')
+
+        resultado = Paciente.objects.buscar_paciente(dato)
+
+        return resultado
+
+
+
+class InformacionPaciente(DetailView):
+    template_name = 'paciente/informacion-paciente.html'
+    context_object_name = "paciente"
+
+    def get_queryset(self):
+        dato = self.kwargs['pk']
+        resultado =  Paciente.objects.consultar_paciente(dato)
+        return resultado
+    
+
+    def get_context_data(self, **kwargs):
+        context = super(InformacionPaciente, self).get_context_data(**kwargs)
+        dato = self.kwargs['pk']
+        context["historia_citas"] = Cita.objects.citas_del_paciente(dato)
+        return context
+    
+    
+
+    

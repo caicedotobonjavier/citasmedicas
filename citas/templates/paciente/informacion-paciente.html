@@ -1,0 +1,72 @@
+{% extends 'paciente/base_paciente.html' %}
+
+{% load static %}
+
+
+{% block title %}
+    Informacion del paciente
+{% endblock title %}
+
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center"  style="margin-top: 2em;">        
+
+        <div class="grid-x grid-margin-x align-center">
+
+            <div class="card" style="width: 500px;">
+                <div class="card-divider">
+                    <h5>INFORMACION DEL PACIENTE</h5>
+                </div>                
+                <div class="card-section">
+                    <b>NOMBRES : </b>{{paciente.nombres}} <br>
+                    <b>APELLIDOS :</b> {{paciente.apellidos}} <br>
+                    <b>TIPO DE DOCUMENTO :</b> {{paciente.get_tipo_documento_display}}</> <br>
+                    <b>NUMERO DE DOCUMENTO :</b> {{paciente.nro_documento}} <br>
+                    <b>FECHA DE NACIMIENTO : </b>{{paciente.fecha_nacimiento}} <br>
+                    <b>EDAD :</b> {{paciente.edad}} <br>
+                    <b>GENERO :</b> {{paciente.get_genero_display}} <br>
+                    <b>EMAIL :</b> {{paciente.email}} <br>
+                    <b>EPS :</b> {{paciente.eps}} <br>
+                    <b>TELEFONO :</b> {{paciente.telefono}} <br>
+                </div>
+            </div>
+
+            
+            
+        </div>
+    </div>
+
+    <div class="cell grid-x grid-margin-x" style="margin-top: 2em;">
+        <h5>Historico de citas del paciente</h5>
+        <table class="hover">
+            <thead>
+                <th>Fecha Cita</th>
+                <th>Historia Clinica</th>
+                <th>EPS</th>
+                <th>Cod. Autorizacion</th>                
+                <th>Tipo de Estudio</th>
+                <th>Observaciones</th>
+            </thead>
+        <tbody>
+            {% for historia in historia_citas %}
+            <tr>
+                <td>{{historia.fecha_cita}}</td>
+                <td>{{historia.historia_clinica}}</td>
+                <td>{{historia.eps}}</td>
+                <td>{{historia.codigo_autorizacion}}</td>
+                <td>{{historia.tipo_estudio}}</td>
+                <td>{{historia.obsernaciones}}</td>                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+</div>
+
+{% endblock content %}
+    

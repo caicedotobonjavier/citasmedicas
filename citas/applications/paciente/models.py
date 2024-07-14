@@ -3,6 +3,8 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 #
 from applications.eps.models import Eps
+#
+from .managers import PacienteManager
 # Create your models here.
 
 class Paciente(TimeStampedModel):
@@ -43,6 +45,8 @@ class Paciente(TimeStampedModel):
     edad = models.IntegerField('Edad', blank=True)
     eps = models.ForeignKey(Eps, related_name='paciente_eps', on_delete=models.CASCADE)
     telefono = models.CharField('Telefono Contacto', max_length=20, blank=True)
+
+    objects = PacienteManager()
 
 
     class Meta:

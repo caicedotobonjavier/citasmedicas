@@ -16,7 +16,7 @@ from django.urls import reverse_lazy
 class AgregarPacienteView(FormView):
     template_name = 'paciente/agregar-paciente.html'
     form_class = AgregarPacienteForm
-    success_url = reverse_lazy('paciente_app:agregar_paciente')
+    success_url = reverse_lazy('paciente_app:todos_los_pacientes')
 
     def form_valid(self, form):        
 
@@ -67,6 +67,10 @@ class InformacionPaciente(DetailView):
         context["historia_citas"] = Cita.objects.citas_del_paciente(dato)
         return context
     
-    
 
-    
+
+class ActualizarInformacionPacienteView(UpdateView):
+    template_name = 'paciente/actualizar-informacion-paciente.html'
+    form_class = AgregarPacienteForm
+    model = Paciente
+    success_url = reverse_lazy('paciente_app:todos_los_pacientes')

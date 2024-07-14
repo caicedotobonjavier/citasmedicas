@@ -4,7 +4,7 @@
 
 
 {% block title %}
-    Informacion del paciente
+Informacion del paciente
 {% endblock title %}
 
 
@@ -32,6 +32,7 @@
                     <b>EMAIL :</b> {{paciente.email}} <br>
                     <b>EPS :</b> {{paciente.eps}} <br>
                     <b>TELEFONO :</b> {{paciente.telefono}} <br>
+                    <a class="cell button primary" href="{% url 'paciente_app:actualizar_pacientes' paciente.id %}">Actualizar Informacion</a>
                 </div>
             </div>
 
@@ -59,7 +60,7 @@
                 <td>{{historia.eps}}</td>
                 <td>{{historia.codigo_autorizacion}}</td>
                 <td>{{historia.tipo_estudio}}</td>
-                <td>{{historia.obsernaciones}}</td>                
+                <td>{{historia.obsernaciones}}</td> 
             </tr>
             {% endfor %}
         </tbody>

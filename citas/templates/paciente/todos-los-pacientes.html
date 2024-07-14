@@ -3,12 +3,17 @@
 {% load static %}
 
 
+{% block title %}
+Lista de Pacientes
+{% endblock title %}
+
+
 {% block content %}
 
 {% include 'includes/header.html' %}
 
 <div class="grid-container">
-    <div class="grid-x grid-margin-x align-center">
+    <div class="grid-x grid-margin-x align-center" style="margin-top: 2em;">
         <h3 class="cell" style="text-align:center;">LISTA DE PACIENTES REGISTRADOS</h3>
 
         <div class="cell grid-x grid-margin-x align-center">

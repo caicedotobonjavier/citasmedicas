@@ -26,7 +26,7 @@ class Cita(TimeStampedModel):
     class Meta:
         verbose_name = 'Cita'
         verbose_name_plural = 'Citas'
-        ordering = ['fecha_cita']
+        ordering = ['fecha_cita', 'hora_cita']
         unique_together = ['fecha_cita', 'hora_cita']
     
 

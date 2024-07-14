@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Agreagar Paciente
+Asignar Cita
 {% endblock title %}
 
 
@@ -12,48 +12,36 @@ Agreagar Paciente
 {% include 'includes/header.html' %}
 
 <div class="grid-x grid-margin-x align-center" style="margin-top: 2em;">
-    <h1 class="cell" style="text-align:center;">CREAR NUEVO PACIENTE</h1>
+    <h1 class="cell" style="text-align:center;">ASIGNAR CITA MEDICA</h1>
         <div class="cell large-6">
 
         <form class="cell medium-9 grid-x grid-margin-x" method="POST">{% csrf_token %}
             <div class="medium-6 cell">
-                <label>Nombre
-                {{form.nombres}}
+                <label>Fecha Actual
+                {{form.fecha_actual}}
                 </label>
             </div>
             <div class="medium-6 cell">
-                <label>Apellidos
-                    {{form.apellidos}}
+                <label>Fecha de Cita
+                    {{form.fecha_cita}}
                 </label>
             </div>
             <div class="medium-6 cell">
-                <label>Tipo Documento
-                    {{form.tipo_documento}}
+                <label>Hora Cita
+                    {{form.hora_cita}}
                 </label>
             </div>
             <div class="medium-6 cell">
-                <label>N° Documento
-                    {{form.nro_documento}}
+                <label>Historia Clinica
+                    {{form.historia_clinica}}
                 </label>
             </div>
 
             <div class="medium-6 cell">
-                <label>Fecha Nacimiento
-                    {{form.fecha_nacimiento}}
+                <label>Paciente
+                    {{form.paciente}}
                 </label>
             </div> 
-
-            <div class="medium-6 cell">
-                <label>Genero
-                    {{form.genero}}
-                </label>
-            </div>
-
-            <div class="medium-6 cell">
-                <label>Edad
-                    {{form.edad}}
-                </label>
-            </div>
 
             <div class="medium-6 cell">
                 <label>EPS
@@ -62,20 +50,31 @@ Agreagar Paciente
             </div>
 
             <div class="medium-6 cell">
-                <label>Email
-                    {{form.email}}
-                </label>
-            </div>                
-            
-            <div class="medium-6 cell">
-                <label>Telefono
-                    {{form.telefono}}
+                <label>Codigo Autorizacion
+                    {{form.codigo_autorizacion}}
                 </label>
             </div>
+
+            <div class="medium-6 cell">
+                <label>Tipo de Estudio
+                    {{form.tipo_estudio}}
+                </label>
+            </div>
+
+            <div class="medium-12 cell">
+                <label>Observaciones
+                    {{form.obsernaciones}}
+                </label>
+            </div> 
 
             <div class="cell medium-6">
                 <button type="submit" class="success button">Guardar</button>
             </div>
+
+            
+            {% if form.errors %}
+            <p style="color:red;">Ya existe una cita para este dia y hora</p>
+            {% endif %}
 
         </form>
 

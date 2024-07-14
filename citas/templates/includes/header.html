@@ -14,16 +14,16 @@
       <li>
         <a href="#">Citas</a>
         <ul class="menu vertical">
-          <li><a href="#">Ver Citas</a></li>
-          <li><a href="#">Asignar Cita</a></li>
+          <li><a href="{% url 'cita_app:todas_las_citas' %}">Ver Citas</a></li>
+          <li><a href="{% url 'cita_app:asignar_cita' %}">Asignar Cita</a></li>
         </ul>
       </li>
 
       <li>
         <a href="#">EPS</a>
         <ul class="menu vertical">
-          <li><a href="#">Ver EPS</a></li>
-          <li><a href="#">Agregar EPS</a></li>
+          <li><a href="{% url 'eps_app:lista_eps' %}">Ver EPS</a></li>
+          <li><a href="{% url 'eps_app:agregar_eps' %}">Agregar EPS</a></li>
         </ul>
       </li>
 
@@ -32,10 +32,14 @@
       
     </ul>
   </div>
+
   <div class="top-bar-right">
     <ul class="menu">
-      <li><input type="search" placeholder="Buscar" /></li>
-      <li><a class="button primary" href="#">Registrar Nuevo</a></li>
+      {% if user.is_authenticated %}
+      <li><a class="button primary" href="#">Cerrar Sesion</a></li>
+      {% else %}
+      <li><a class="button primary" href="#">Iniciar Sesion</a></li>
+      {% endif %}
     </ul>
   </div>
 </div>

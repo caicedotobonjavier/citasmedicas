@@ -16,7 +16,8 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 def send_mail_google(correo, fecha_cita, hora_cita, paciente):
 
     creds = None
-    # El archivo token.json almacena los tokens de acceso y actualización del usuario, y se crea automáticamente cuando se completa el flujo de autorización por primera vez
+    # El archivo token.json almacena los tokens de acceso y actualización del usuario, y se crea automáticamente 
+    # cuando se completa el flujo de autorización por primera vez
     if os.path.exists('token.json'):
         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
 

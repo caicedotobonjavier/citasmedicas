@@ -36,7 +36,9 @@
   <div class="top-bar-right">
     <ul class="menu">
       {% if user.is_authenticated %}
-      <li><a class="button primary" href="#">Cerrar Sesion</a></li>
+      <form action="{% url 'user_app:logout' %}" method="POST">{% csrf_token %}
+        <li><button type="submit" class="button primary">Cerrar Sesion</button></li>
+      </form>
       {% else %}
       <li><a class="button primary" href="#">Iniciar Sesion</a></li>
       {% endif %}

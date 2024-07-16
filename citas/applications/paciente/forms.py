@@ -45,6 +45,7 @@ class AgregarPacienteForm(forms.ModelForm):
             ),
 
             'fecha_nacimiento' : forms.DateInput(
+                format='%Y-%m-%d',
                 attrs={
                     'type' : 'date'
                 }

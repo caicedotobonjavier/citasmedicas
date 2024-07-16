@@ -1,0 +1,42 @@
+<!-- head para PC -->
+{% extends "users/base_users.html" %}
+
+{% load  static %}
+
+{% block content %}
+
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center" style="margin-top: 6em;">
+        <div class="cell medium-7 large-5" style="margin-top: 2em;">
+            <div class="card" style="width: 100%;">
+                <div class="card-divider">
+                    <h4>Ingreso app citas</h4>
+                </div>
+                <div class="card-section">
+                    <form class="grid-x grid-margin-x" method="POST">{% csrf_token %}
+                        <div class="cell medium-12">
+                            <label>Email:
+                                {{form.email}}
+                            </label>
+                        </div>
+                        <div class="cell medium-12">
+                            <label>Contraseña:
+                                {{form.password}}
+
+                                {% if form.errors %}
+                                <h5 style="color:red;">El usuario o contraseña no existen</h5>
+                                {% endif %}
+
+                            </label>
+                        </div>
+                        <button type="submit" class="cell hollow button primary">Acceder</button>
+                        <a class="cell hollow button alert" href="#">Registrar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -49,13 +49,45 @@ Citas Asignadas
                 <td>{{cita.paciente}}</td>
                 <td>{{cita.tipo_estudio}}</td>
                 <td>
-                    <a href="{% url 'cita_app:actualizar__citas' cita.id %}" class="button">Modidicar Cita</a>
+                    <a href="{% url 'cita_app:actualizar__citas' cita.id %}" class="button">Modificar Cita</a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     </div>
+
+    <!-- INICIO PAGINACION-->
+    <div class="cell">
+        {% if is_paginated %}
+        <nav aria-label="Pagination">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="pagination-previous">
+                    <a href="?page={{page_obj.previous_page_number}}">Atras</a>
+                </li>
+                {% endif %}
+
+                {% for pagina in paginator.page_range %}
+                
+                {% if pagina == page_obj.number %} 
+                <li class="current"><span class="show-for-sr">You're on page</span>{{pagina}}</li>
+                {% else %}
+                <li class=""><a href="?page={{pagina}}">{{pagina}}</a></li>
+                {% endif %} 
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                <li class="pagination-next">
+                    <a href="?page={{page_obj.next_page_number}}">Siguiente</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}            
+    </div>
+<!-- FIN PAGINACION--> 
+
 
 </div>
 

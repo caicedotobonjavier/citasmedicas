@@ -41,6 +41,7 @@ class ListaPacientesView(ListView):
     template_name = 'paciente/todos-los-pacientes.html'
     model = Paciente
     context_object_name = 'pacientes'
+    paginate_by = 6
 
     def get_queryset(self):
         dato = self.request.GET.get('paciente')

@@ -6,7 +6,13 @@ from django.views.generic import FormView, TemplateView, UpdateView, ListView
 #
 from .forms import AsignarCitaForm, ActualizarCitaForm
 #
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+#
+from django.http import HttpResponseRedirect
+#
+from django.core.mail import send_mail
+#
+from .functions import send_mail_google
 # Create your views here.
 
 
@@ -18,7 +24,7 @@ class AsignarCitaView(FormView):
 
     def form_valid(self, form):
 
-        Cita.objects.create(
+        cita_medica = Cita.objects.create(
             fecha_actual = form.cleaned_data['fecha_actual'],
             fecha_cita = form.cleaned_data['fecha_cita'],
             hora_cita = form.cleaned_data['hora_cita'],
@@ -30,13 +36,37 @@ class AsignarCitaView(FormView):
             obsernaciones = form.cleaned_data['obsernaciones'],
         )
 
-        return super(AsignarCitaView, self).form_valid(form)
+        #enviar codigo al email del usaurio con send_mail
+        #asunto = 'Asignacion cita cardiologia'
+        #mensaje = f"""Cordial Saludo,
+        #\nConfirmacion de cita medica para el paciente {cita_medica.paciente}.
+        #\nFecha cita: {cita_medica.fecha_cita}
+        #\nHora cita: {cita_medica.hora_cita}
+        #\nRecuerde presentarse 20 minutos antes, presentarse con el documento de identidad original y examenes previos si los tiene.
+        #\nFeliz dia."""
+#
+        #email_remitente = 'jacto2024@gmail.com'
+        ##
+        #send_mail(asunto, mensaje, email_remitente, [cita_medica.paciente.email],)
+
+
+        #OTRA FORMA DE ENVIAR CORREOS
+        if cita_medica.paciente.email:
+            send_mail_google(cita_medica.paciente.email, cita_medica.fecha_cita, cita_medica.hora_cita, cita_medica.paciente)
+        
+
+        return HttpResponseRedirect(
+            reverse(
+                'cita_app:todas_las_citas',
+            )
+        )
 
 
 class VerCitasAsignadaView(ListView):
     template_name = 'cita/citas-asignadas.html'
     model = Cita
     context_object_name = 'citas'
+    paginate_by = 6
 
 
     def get_queryset(self):

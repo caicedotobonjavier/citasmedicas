@@ -22,21 +22,7 @@ def send_mail_google(correo, fecha_cita, hora_cita, paciente):
 
         service = build('gmail', 'v1', credentials=creds)
             
-        message = MIMEText(f"""Cordial Saludo,
-            \nConfirmacion de cita medica para el paciente : {paciente}.
-            \nFecha cita: {fecha_cita}
-            \nHora cita: {hora_cita}
-            \nRecuerde presentarse 20 minutos antes, presentarse con el documento de identidad original y examenes previos si los tiene.
-            \nFeliz dia.""")
-        message['to'] = correo
-        message['subject'] = 'Asignacion de cita cardiologia'
-        create_message = {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
-        try:
-            message = (service.users().messages().send(userId="me", body=create_message).execute())
-            print(F'sent message')
-        except HttpError as error:
-            print(F'******** ocurrio un error****: {error}')
-            message = None
+        new_mail(creds, correo, fecha_cita, hora_cita, paciente)
 
         
     # Si no hay credenciales válidas disponibles, permite que el usuario inicie sesión
@@ -56,21 +42,26 @@ def send_mail_google(correo, fecha_cita, hora_cita, paciente):
             with open('token.json', 'w') as token:
                 token.write(creds.to_json())
             
-            service = build('gmail', 'v1', credentials=creds)
-            
-            message = MIMEText(f"""Cordial Saludo,
-                \nConfirmacion de cita medica para el paciente : {paciente}.
-                \nFecha cita: {fecha_cita}
-                \nHora cita: {hora_cita}
-                \nRecuerde presentarse 20 minutos antes, presentarse con el documento de identidad original y examenes previos si los tiene.
-                \nFeliz dia.""")
-            message['to'] = correo
-            message['subject'] = 'Asignacion de cita cardiologia'
-            create_message = {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
+            new_mail(creds, correo, fecha_cita, hora_cita, paciente)
 
-            try:
-                message = (service.users().messages().send(userId="me", body=create_message).execute())
-                print(F'sent message')
-            except HttpError as error:
-                print(F'******** ocurrio un error****: {error}')
-                message = None
+
+
+def new_mail(creds, correo, fecha_cita, hora_cita, paciente):
+    service = build('gmail', 'v1', credentials=creds)
+            
+    message = MIMEText(f"""Cordial Saludo,
+        \nConfirmacion de cita medica para el paciente : {paciente}.
+        \nFecha cita: {fecha_cita}
+        \nHora cita: {hora_cita}
+        \nRecuerde presentarse 20 minutos antes, presentarse con el documento de identidad original y examenes previos si los tiene.
+        \nFeliz dia.""")
+    message['to'] = correo
+    message['subject'] = 'Asignacion de cita cardiologia'
+    create_message = {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
+
+    try:
+        message = (service.users().messages().send(userId="me", body=create_message).execute())
+        print(F'sent message')
+    except HttpError as error:
+        print(F'******** ocurrio un error****: {error}')
+        message = None

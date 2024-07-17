@@ -14,17 +14,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Eps',
+            name='Examen',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, editable=False, verbose_name='created')),
                 ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, editable=False, verbose_name='modified')),
-                ('nombre', models.CharField(max_length=50, verbose_name='Eps')),
+                ('nombre_examen', models.CharField(max_length=100, unique=True, verbose_name='Nomde del Examen')),
             ],
             options={
-                'verbose_name': 'EPS',
-                'verbose_name_plural': 'EPS',
-                'ordering': ['id'],
+                'verbose_name': 'Examen',
+                'verbose_name_plural': 'Examenes',
+                'ordering': ['nombre_examen'],
             },
         ),
     ]

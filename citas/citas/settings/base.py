@@ -47,6 +47,7 @@ LOCAL_APPS = (
     'applications.paciente',
     'applications.cita',
     'applications.home',
+    'applications.examen',
 )
 
 

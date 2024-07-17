@@ -6,6 +6,8 @@ from applications.paciente.models import Paciente
 #
 from applications.eps.models import Eps
 #
+from applications.examen.models import Examen
+#
 from .managers import CitaManager
 # Create your models here.
 
@@ -18,7 +20,7 @@ class Cita(TimeStampedModel):
     paciente = models.ForeignKey(Paciente, related_name='cita_paciente', on_delete=models.CASCADE)
     eps = models.ForeignKey(Eps, related_name='cita_eps', on_delete=models.CASCADE)
     codigo_autorizacion = models.CharField('Codigo Autorizacion', max_length=20)
-    tipo_estudio = models.CharField('Tipo de Estudio', max_length=20)
+    examen = models.ForeignKey(Examen, related_name='cita_examen', on_delete=models.CASCADE, default='Examen')    
     obsernaciones = models.TextField('Observaciones', blank=True)
 
     objects = CitaManager()

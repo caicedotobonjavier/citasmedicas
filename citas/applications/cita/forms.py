@@ -14,7 +14,7 @@ class AsignarCitaForm(forms.ModelForm):
             'paciente',
             'eps',
             'codigo_autorizacion',
-            'tipo_estudio',
+            'examen',
             'obsernaciones',
         )
 
@@ -49,11 +49,7 @@ class AsignarCitaForm(forms.ModelForm):
                 }
             ),
 
-            'tipo_estudio' : forms.TextInput(
-                attrs={
-                    'placeholder' : 'Tipo de Estudio'
-                }
-            ),
+            
 
             'obsernaciones' : forms.Textarea(
                 attrs={
@@ -76,7 +72,7 @@ class ActualizarCitaForm(forms.ModelForm):
             'paciente',
             'eps',
             'codigo_autorizacion',
-            'tipo_estudio',
+            'examen',
             'obsernaciones',
         )
 
@@ -113,12 +109,6 @@ class ActualizarCitaForm(forms.ModelForm):
             'codigo_autorizacion' : forms.TextInput(
                 attrs={
                     'placeholder' : 'Codigo de Autorizacion'
-                }
-            ),
-
-            'tipo_estudio' : forms.TextInput(
-                attrs={
-                    'placeholder' : 'Tipo de Estudio'
                 }
             ),
 

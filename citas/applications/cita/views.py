@@ -32,7 +32,7 @@ class AsignarCitaView(FormView):
             paciente = form.cleaned_data['paciente'],
             eps = form.cleaned_data['eps'],
             codigo_autorizacion = form.cleaned_data['codigo_autorizacion'],
-            tipo_estudio = form.cleaned_data['tipo_estudio'],
+            examen = form.cleaned_data['examen'],
             obsernaciones = form.cleaned_data['obsernaciones'],
         )
 

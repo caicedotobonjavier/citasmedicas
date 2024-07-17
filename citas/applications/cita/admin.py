@@ -14,7 +14,7 @@ class CitaAdmin(admin.ModelAdmin):
         'paciente',
         'eps',
         'codigo_autorizacion',
-        'tipo_estudio',
+        'examen',
         'obsernaciones',
     )
 

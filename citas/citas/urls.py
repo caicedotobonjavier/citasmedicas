@@ -24,4 +24,5 @@ urlpatterns = [
     re_path('', include('applications.cita.urls')),
     re_path('', include('applications.eps.urls')),
     re_path('', include('applications.users.urls')),
+    re_path('', include('applications.examen.urls')),
 ]

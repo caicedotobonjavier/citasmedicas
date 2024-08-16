@@ -1,5 +1,7 @@
 from django import forms
 #
+from .models import User
+#
 from django.contrib.auth import authenticate
 
 
@@ -38,3 +40,28 @@ class LoginForm(forms.Form):
         
 
         return self.cleaned_data
+
+
+
+class AddUserForm(forms.ModelForm):
+
+    password = forms.CharField(
+        required=True,
+        label='Contraseña',
+        widget=forms.PasswordInput(
+            attrs={
+                'placeholder' : 'Contraseña del usuario'
+            }
+        )
+    )
+    
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'full_name',
+            'cedula',
+            'genero',
+            'cargo',
+            'telefono',
+        )

@@ -3,6 +3,15 @@
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">App Citas Medicas</li>
       <li><a href="{% url 'home_app:index' %}">Inicio</a></li>
+
+      <li>
+        <a href="#">EPS</a>
+        <ul class="menu vertical">
+          <li><a href="{% url 'eps_app:lista_eps' %}">Ver EPS</a></li>
+          <li><a href="{% url 'eps_app:agregar_eps' %}">Agregar EPS</a></li>
+        </ul>
+      </li>
+      
       <li>
         <a href="#">Pacientes</a>
         <ul class="menu vertical">
@@ -20,15 +29,9 @@
       </li>
 
       <li>
-        <a href="#">EPS</a>
-        <ul class="menu vertical">
-          <li><a href="{% url 'eps_app:lista_eps' %}">Ver EPS</a></li>
-          <li><a href="{% url 'eps_app:agregar_eps' %}">Agregar EPS</a></li>
-        </ul>
+        <a href="{% url 'user_app:register' %}">Agregar Usuario</a>
       </li>
 
-      <li><a href="#">Usuarios</a></li>
-      <li><a href="#">Administrar</a></li>
       
     </ul>
   </div>
@@ -40,7 +43,7 @@
         <li><button type="submit" class="button primary">Cerrar Sesion</button></li>
       </form>
       {% else %}
-      <li><a class="button primary" href="#">Iniciar Sesion</a></li>
+      <li><a class="button primary" href="{% url 'user_app:login' %}">Iniciar Sesion</a></li>
       {% endif %}
     </ul>
   </div>

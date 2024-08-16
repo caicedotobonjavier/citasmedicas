@@ -1,0 +1,72 @@
+{% extends 'users/base_users.html' %}
+
+{% load static %}
+
+{% block title %}
+Agreagar Paciente
+{% endblock title %}
+
+
+{% block content %}
+
+{% include 'includes/header.html' %}
+
+<div class="grid-x grid-margin-x align-center" style="margin-top: 2em;">
+    <h1 class="cell" style="text-align:center;">AGREGAR NUEVO USUARIO DEL SISTEMA</h1>
+        <div class="cell large-6">
+
+        <form class="cell medium-9 grid-x grid-margin-x" method="POST">{% csrf_token %}
+
+            <div class="medium-12 cell">
+                <label>Nombre Completo
+                {{form.full_name}}
+                </label>
+            </div>               
+
+            <div class="medium-6 cell">
+                <label>N° Documento
+                    {{form.cedula}}
+                </label>
+            </div>
+
+            <div class="medium-6 cell">
+                <label>Genero
+                    {{form.genero}}
+                </label>
+            </div>
+
+            <div class="medium-6 cell">
+                <label>Telefono
+                    {{form.telefono}}
+                </label>
+            </div>
+
+            <div class="medium-6 cell">
+                <label>Cargo
+                    {{form.cargo}}
+                </label>
+            </div>
+
+            <div class="medium-6 cell">
+                <label>Email
+                    {{form.email}}
+                </label>
+            </div>    
+
+            <div class="medium-6 cell">
+                <label>Contraseña
+                    {{form.password}}
+                </label>
+            </div>
+
+            <div class="cell medium-6">
+                <button type="submit" class="success button">Guardar</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock content %}

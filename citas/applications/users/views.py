@@ -1,8 +1,10 @@
 from django.shortcuts import render
 #
+from .models import User
+#
 from django.views.generic import FormView, View
 #
-from .forms import LoginForm
+from .forms import LoginForm, AddUserForm
 #
 from django.contrib.auth import login, logout, authenticate
 #
@@ -42,3 +44,21 @@ class LoguotUserView(View):
             )
         )
 
+
+class AddUserView(FormView):
+    template_name = 'users/register_user.html'
+    form_class = AddUserForm
+    success_url = reverse_lazy('home_app:index')
+
+    def form_valid(self, form):
+        User.objects.create_user(
+            form.cleaned_data['email'],
+            form.cleaned_data['password'],
+            full_name = form.cleaned_data['full_name'],
+            cedula = form.cleaned_data['cedula'],
+            genero = form.cleaned_data['genero'],
+            cargo = form.cleaned_data['cargo'],
+            telefono = form.cleaned_data['telefono'],
+        )
+        return super(AddUserView, self).form_valid(form)
+    

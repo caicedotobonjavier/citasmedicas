@@ -12,6 +12,10 @@ class UserAdmin(admin.ModelAdmin):
         'genero',
         'cargo',
         'telefono',
+        'is_staff',
+        'is_active',
+        'is_superuser',
     )
+    
 
 admin.site.register(User, UserAdmin)

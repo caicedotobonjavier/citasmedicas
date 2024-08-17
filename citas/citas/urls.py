@@ -32,10 +32,10 @@ admin.site.site_title = 'Sandeep Shaw'
 
 urlpatterns = [
     path(f'{adminPath}/', admin.site.urls),
-    re_path('', include('applications.home.urls')),
-    re_path('', include('applications.paciente.urls')),
-    re_path('', include('applications.cita.urls')),
-    re_path('', include('applications.eps.urls')),
-    re_path('', include('applications.users.urls')),
-    re_path('', include('applications.examen.urls')),
+    path('', include('applications.home.urls')),
+    path('', include('applications.paciente.urls')),
+    path('', include('applications.cita.urls')),
+    path('', include('applications.eps.urls')),
+    path('', include('applications.users.urls')),
+    path('', include('applications.examen.urls')),
 ]

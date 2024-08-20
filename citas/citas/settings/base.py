@@ -1,9 +1,6 @@
 from django.core.exceptions import ImproperlyConfigured
 import json
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from unipath import Path
@@ -26,7 +23,7 @@ def get_secret(secret_name, secrets=secret):
 
 
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = get_secret('SECRET_KEY')
 
 
 # Application definition

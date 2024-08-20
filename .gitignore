@@ -1,4 +1,4 @@
 archivos que no se pueden compartir en el repositorio
-#citas/secret.json
-#citas/credenciales.json
-#citas/token.json
+citas/secret.json
+citas/credenciales.json
+citas/token.json
